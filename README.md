@@ -62,7 +62,7 @@ These userscripts should be used with browsers addons such as Violentmonkey, Fir
 To ease the installation process, you can use and HTTP server and install them from there.  
 E.g.: `python3 -m http.server` will create an HTTP server in the current directory and serve files from there.
 
-$ Hooks
+# Hooks
 
 The [.hooks](.hooks) directory contains useful hooks to ease management of this repository.
 In particular, the [pre-commit](.hooks/pre-commit) hooks contains a script to automatically generate the README.md file with every commit.

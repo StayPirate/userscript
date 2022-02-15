@@ -76,7 +76,7 @@ generate_readme() {
     echo 'To ease the installation process, you can use and HTTP server and install them from there.  '
     echo 'E.g.: `python3 -m http.server` will create an HTTP server in the current directory and serve files from there.'
 
-    printf '\n$ Hooks\n\n'
+    printf '\n# Hooks\n\n'
     echo 'The [.hooks](.hooks) directory contains useful hooks to ease management of this repository.'
     echo 'In particular, the [pre-commit](.hooks/pre-commit) hooks contains a script to automatically generate the README.md file with every commit.'
 }
