@@ -1,0 +1,80 @@
+#! /usr/bin/env -S bash -i
+
+repodir="$(git rev-parse --show-toplevel)"
+
+trim() {
+    sed 's/^[ \t]*//g; s/[ \t]*$//g' <<< "$1"
+}
+
+
+get_images() {
+    local name="$(basename "$1" ".user.js")"
+
+    find "$image_dir" -name "${name}*" | LANG=C sort -g
+}
+
+
+get_description() {
+    local desc="$(grep -o "@description.*" "$1")"
+
+    desc="$(trim "${desc/@description/}")"
+
+    printf '%s\n' "${desc%.}."
+}
+
+
+generate_scripts_docs() {
+    printf '# Userscripts\n'
+
+    local scripts="$(find "$repodir" -name '*.user.js' | sed "s#^${repodir}/##g" | LANG=C sort -g)"
+    local image_dir="${repodir}/images"
+
+    local current_section=""
+
+    for file in $scripts
+    do
+        printf '\n'
+
+        local section="$(dirname "$file")"
+        local script="$(basename "$file")"
+
+        if test "$section" != "$current_section"
+        then
+            printf '## %s\n\n' "$section"
+            current_section="$section"
+        fi
+
+        printf '***[%s](%s)***\n\n' "$script" "$file"
+
+        get_description "$file"
+
+        local images="$(get_images "$script")"
+
+        if test -n "$images"
+        then
+            printf '\nScreenshots:\n'
+
+            for i in $images
+            do
+                printf '\n![](%s)\n' "$i"
+            done
+        fi
+
+    done
+}
+
+generate_readme() {
+    generate_scripts_docs
+
+    printf '\n# Installation\n\n'
+    echo 'These userscripts should be used with browsers addons such as Violentmonkey, Firemonkey, Greasemonkey or Tampermonkey. '
+    echo 'To ease the installation process, you can use and HTTP server and install them from there.  '
+    echo 'E.g.: `python3 -m http.server` will create an HTTP server in the current directory and serve files from there.'
+
+    printf '\n$ Hooks\n\n'
+    echo 'The [.hooks](.hooks) directory contains useful hooks to ease management of this repository.'
+    echo 'In particular, the [pre-commit](.hooks/pre-commit) hooks contains a script to automatically generate the README.md file with every commit.'
+}
+
+generate_readme > "${repodir}/README.md"
+git add "${repodir}/README.md"
