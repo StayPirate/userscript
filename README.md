@@ -1,17 +1,20 @@
+# Table of Contents
+
+- [Userscripts](#userscripts)
+  - [Bugzilla](#bugzilla)
+    - [bugzilla-fix-background.user.js](#bugzilla-fix-backgrounduserjs)
+    - [bugzilla-hide-bots-comments.user.js](#bugzilla-hide-bots-commentsuserjs)
+    - [bugzilla-redirect-to-com.user.js](#bugzilla-redirect-to-comuserjs)
+  - [SMASH](#smash)
+    - [smash-login-redirection.user.js](#smash-login-redirectionuserjs)
+    - [smash-opensuse-actions.user.js](#smash-opensuse-actionsuserjs)
+    - [smash-useful-links.user.js](#smash-useful-linksuserjs)
+  - [SMELT](#smelt)
+    - [smelt-better-ibs-integration.user.js](#smelt-better-ibs-integrationuserjs)
+- [Installation](#installation)
+- [Hooks](#hooks)
+
 # Userscripts
-
-## Table of Contents
-
-- [Bugzilla](#bugzilla)
-  - [bugzilla-fix-background.user.js](#bugzilla-fix-backgrounduserjs)
-  - [bugzilla-hide-bots-comments.user.js](#bugzilla-hide-bots-commentsuserjs)
-  - [bugzilla-redirect-to-com.user.js](#bugzilla-redirect-to-comuserjs)
-- [SMASH](#smash)
-  - [smash-login-redirection.user.js](#smash-login-redirectionuserjs)
-  - [smash-opensuse-actions.user.js](#smash-opensuse-actionsuserjs)
-  - [smash-useful-links.user.js](#smash-useful-linksuserjs)
-- [SMELT](#smelt)
-  - [smelt-better-ibs-integration.user.js](#smelt-better-ibs-integrationuserjs)
 
 ## Bugzilla
 

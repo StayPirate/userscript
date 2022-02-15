@@ -63,99 +63,18 @@ get_description() {
     fi
 }
 
-print_script_entry() {
-    local script="$1"
-    local file="$2"
-
-    printf '### [%s](%s)\n\n' "$script" "$file"
-
-    get_version "$file"
-    get_description "$file"
-
-    local images="$(get_images "$script")"
-
-    if test -n "$images"
-    then
-        printf '\n#### Screenshots\n'
-
-        for i in $images
-        do
-            printf '\n![](%s)\n' "$i"
-        done
-    fi
-
-}
-
-
-print_script_section() {
-    printf '## %s\n\n' "$1"
-}
-
-
-print_scripts() {
-    script_foreach "$1" print_script_section print_script_entry
-}
-
-
-get_reference() {
-    tr -d '.' <<< "${1,,}"
-}
-
-
-print_toc_entry() {
-    local script="$1"
-    printf -- '  - [%s](#%s)' "$script" "$(get_reference "$script")"
-}
-
-print_toc_section() {
-    local section="$1"
-    printf -- '- [%s](#%s)\n' "$section" "$(get_reference "$section")"
-}
-
-
-print_toc() {
-    printf '\n## Table of Contents\n'
-    script_foreach "$1" print_toc_section print_toc_entry
+generate_toc() {
+    printf '# Table of Contents\n\n'
+    grep -E '^#{1,3} .*' <<< "$1" | sed -r 's/\(.*\)//g; s/# /- /; s/ ([^\[]*)$/ [\1]/g; s/#/  /g; s/\[([^]]*)\]/[\1](#\L\1)/g; s/.user.js\)/userjs)/g'
     printf '\n'
 }
-
-
-script_foreach() {
-    local scripts="$1"
-    local on_section_change="$2"
-    local f="$3"
-    local current_section=""
-
-    for file in $scripts
-    do
-        printf '\n'
-
-        local section="$(dirname "$file")"
-        local script="$(basename "$file")"
-
-        if test "$section" != "$current_section"
-        then
-            current_section="$section"
-            "$on_section_change" "$section"
-        fi
-
-        $f "$script" "$file"
-    done
-}
-
 
 generate_scripts_docs() {
     printf '# Userscripts\n'
 
     local scripts="$(find_rel_files "" '*.user.js')"
 
-
-
     local current_section=""
-
-    print_toc "$scripts"
-    print_scripts "$scripts"
-    return
 
     for file in $scripts
     do
@@ -201,5 +120,8 @@ generate_readme() {
     done
 }
 
-generate_readme > "${repodir}/README.md"
+content="$(generate_readme)"
+
+generate_toc "$content" > "${repodir}/README.md"
+generate_readme >> "${repodir}/README.md"
 git add "${repodir}/README.md"
