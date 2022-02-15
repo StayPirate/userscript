@@ -12,9 +12,9 @@ Hides bots comment in bugzilla by default. Also add links to quickly collapse or
 
 Screenshots:
 
-![](/home/gabriele/gitprova/userscripts/images/bugzilla-hide-bots-comments.png)
+![](images/bugzilla-hide-bots-comments.png)
 
-![](/home/gabriele/gitprova/userscripts/images/bugzilla-hide-bots-comments_links.png)
+![](images/bugzilla-hide-bots-comments_links.png)
 
 ***[bugzilla-redirect-to-com.user.js](Bugzilla/bugzilla-redirect-to-com.user.js)***
 
@@ -32,7 +32,7 @@ Adds a button to open a bug in the openSUSE bugzilla tracker. Also updates the a
 
 Screenshots:
 
-![](/home/gabriele/gitprova/userscripts/images/smash-opensuse-actions.png)
+![](images/smash-opensuse-actions.png)
 
 ***[smash-useful-links.user.js](SMASH/smash-useful-links.user.js)***
 
@@ -40,9 +40,9 @@ Adds links to the package support status page and package changes file in the SM
 
 Screenshots:
 
-![](/home/gabriele/gitprova/userscripts/images/smash-useful-links_changes.png)
+![](images/smash-useful-links_changes.png)
 
-![](/home/gabriele/gitprova/userscripts/images/smash-useful-links_smelt.png)
+![](images/smash-useful-links_smelt.png)
 
 ## SMELT
 
@@ -52,9 +52,9 @@ Add links to IBS project (patchinfo and package repository) to the SMELT inciden
 
 Screenshots:
 
-![](/home/gabriele/gitprova/userscripts/images/smelt-better-ibs-integration_package.png)
+![](images/smelt-better-ibs-integration_package.png)
 
-![](/home/gabriele/gitprova/userscripts/images/smelt-better-ibs-integration_patchinfo.png)
+![](images/smelt-better-ibs-integration_patchinfo.png)
 
 # Installation
 

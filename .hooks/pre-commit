@@ -6,11 +6,17 @@ trim() {
     sed 's/^[ \t]*//g; s/[ \t]*$//g' <<< "$1"
 }
 
+find_files() {
+    local dir="$1"
+    local name="$2"
+
+    find "${repodir}/${dir}" -name "${name}" | sed "s#^${repodir}/##g" | LANG=C sort -g
+}
+
 
 get_images() {
     local name="$(basename "$1" ".user.js")"
-
-    find "$image_dir" -name "${name}*" | LANG=C sort -g
+    find_files "images" "${name}*"
 }
 
 
@@ -26,8 +32,7 @@ get_description() {
 generate_scripts_docs() {
     printf '# Userscripts\n'
 
-    local scripts="$(find "$repodir" -name '*.user.js' | sed "s#^${repodir}/##g" | LANG=C sort -g)"
-    local image_dir="${repodir}/images"
+    local scripts="$(find_files "" '*.user.js')"
 
     local current_section=""
 
