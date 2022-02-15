@@ -123,5 +123,5 @@ generate_readme() {
 content="$(generate_readme)"
 
 generate_toc "$content" > "${repodir}/README.md"
-generate_readme >> "${repodir}/README.md"
+echo "$content" >> "${repodir}/README.md"
 git add "${repodir}/README.md"
