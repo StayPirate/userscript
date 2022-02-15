@@ -31,10 +31,23 @@ get_docs() {
 }
 
 
-get_description() {
-    local desc="$(grep -o "@description.*" "$1")"
+get_field() {
+    local file="$1"
+    local field="$2"
+    local value="$(grep -o "@${field}.*" "$file")"
 
-    desc="$(trim "${desc/@description/}")"
+    trim "${value/@${field}/}"
+}
+
+
+get_version() {
+    local ver="$(get_field "$1" "version")"
+    printf "Last version: %s\n\n" "$ver"
+}
+
+
+get_description() {
+    local desc="$(get_field "$1" "description")"
 
     printf '%s\n' "${desc%.}."
 
@@ -73,6 +86,7 @@ generate_scripts_docs() {
 
         printf '### [%s](%s)\n\n' "$script" "$file"
 
+        get_version "$file"
         get_description "$file"
 
         local images="$(get_images "$script")"

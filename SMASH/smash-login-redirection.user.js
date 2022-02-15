@@ -6,7 +6,7 @@
 // @grant       none
 // @version     1.1.1
 // @author      gsonnu
-// @description Redirect login page to actual page - using the next search parameter - if the user is already logged in
+// @description Redirects login page to actual page - using the next search parameter - if the user is already logged in
 // ==/UserScript==
 
 (function() {
