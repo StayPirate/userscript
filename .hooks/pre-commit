@@ -10,13 +10,24 @@ find_files() {
     local dir="$1"
     local name="$2"
 
-    find "${repodir}/${dir}" -name "${name}" | sed "s#^${repodir}/##g" | LANG=C sort -g
+    find "${repodir}/${dir}" -type f -name "${name}" 2>/dev/null | LANG=C sort -g
+}
+
+
+find_rel_files() {
+    find_files "$@" | sed "s#^${repodir}/##g"
 }
 
 
 get_images() {
     local name="$(basename "$1" ".user.js")"
-    find_files "images" "${name}*"
+    find_rel_files "images" "${name}*"
+}
+
+
+get_docs() {
+    local name="$(basename "$1" ".user.js")"
+    find_files "docs/script" "${name}*.md"
 }
 
 
@@ -26,13 +37,24 @@ get_description() {
     desc="$(trim "${desc/@description/}")"
 
     printf '%s\n' "${desc%.}."
+
+    local docs="$(get_docs "$1")"
+
+    if test -n "$docs"
+    then
+        for d in $docs
+        do
+            printf "\n"
+            cat "$d"
+        done
+    fi
 }
 
 
 generate_scripts_docs() {
     printf '# Userscripts\n'
 
-    local scripts="$(find_files "" '*.user.js')"
+    local scripts="$(find_rel_files "" '*.user.js')"
 
     local current_section=""
 
@@ -49,7 +71,7 @@ generate_scripts_docs() {
             current_section="$section"
         fi
 
-        printf '***[%s](%s)***\n\n' "$script" "$file"
+        printf '### [%s](%s)\n\n' "$script" "$file"
 
         get_description "$file"
 
@@ -57,7 +79,7 @@ generate_scripts_docs() {
 
         if test -n "$images"
         then
-            printf '\nScreenshots:\n'
+            printf '\n#### Screenshots\n'
 
             for i in $images
             do
@@ -70,15 +92,13 @@ generate_scripts_docs() {
 
 generate_readme() {
     generate_scripts_docs
+    local docs="$(find_files "docs/general" "*.md")"
 
-    printf '\n# Installation\n\n'
-    echo 'These userscripts should be used with browsers addons such as Violentmonkey, Firemonkey, Greasemonkey or Tampermonkey. '
-    echo 'To ease the installation process, you can use and HTTP server and install them from there.  '
-    echo 'E.g.: `python3 -m http.server` will create an HTTP server in the current directory and serve files from there.'
-
-    printf '\n# Hooks\n\n'
-    echo 'The [.hooks](.hooks) directory contains useful hooks to ease management of this repository.'
-    echo 'In particular, the [pre-commit](.hooks/pre-commit) hooks contains a script to automatically generate the README.md file with every commit.'
+    for d in $docs
+    do
+        printf "\n"
+        cat "$d"
+    done
 }
 
 generate_readme > "${repodir}/README.md"
