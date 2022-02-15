@@ -97,14 +97,19 @@ print_scripts() {
 }
 
 
+get_reference() {
+    tr -d '.' <<< "${1,,}"
+}
+
+
 print_toc_entry() {
     local script="$1"
-    printf -- '  - [%s](#%s)' "$script" "${script,,}"
+    printf -- '  - [%s](#%s)' "$script" "$(get_reference "$script")"
 }
 
 print_toc_section() {
     local section="$1"
-    printf -- '- [%s](#%s)\n' "$1" "${1,,}"
+    printf -- '- [%s](#%s)\n' "$section" "$(get_reference "$section")"
 }
 
 
