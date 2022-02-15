@@ -1,5 +1,18 @@
 # Userscripts
 
+## Table of Contents
+
+- [Bugzilla](#bugzilla)
+  - [bugzilla-fix-background.user.js](#bugzilla-fix-background.user.js)
+  - [bugzilla-hide-bots-comments.user.js](#bugzilla-hide-bots-comments.user.js)
+  - [bugzilla-redirect-to-com.user.js](#bugzilla-redirect-to-com.user.js)
+- [SMASH](#smash)
+  - [smash-login-redirection.user.js](#smash-login-redirection.user.js)
+  - [smash-opensuse-actions.user.js](#smash-opensuse-actions.user.js)
+  - [smash-useful-links.user.js](#smash-useful-links.user.js)
+- [SMELT](#smelt)
+  - [smelt-better-ibs-integration.user.js](#smelt-better-ibs-integration.user.js)
+
 ## Bugzilla
 
 ### [bugzilla-fix-background.user.js](Bugzilla/bugzilla-fix-background.user.js)
