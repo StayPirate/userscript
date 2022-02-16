@@ -42,7 +42,7 @@ get_field() {
 
 get_version() {
     local ver="$(get_field "$1" "version")"
-    printf "Last version: %s\n\n" "$ver"
+    printf 'Current version: %s [(Install)](/-/raw/master/%s)\n\n' "$ver" "$1"
 }
 
 

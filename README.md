@@ -20,13 +20,13 @@
 
 ### [bugzilla-fix-background.user.js](Bugzilla/bugzilla-fix-background.user.js)
 
-Last version: 1.1.1
+Current version: 1.1.1 [(Install)](/-/raw/master/Bugzilla/bugzilla-fix-background.user.js)
 
 Fixes the bugzilla background for better integration with the Dark Reader addon.
 
 ### [bugzilla-hide-bots-comments.user.js](Bugzilla/bugzilla-hide-bots-comments.user.js)
 
-Last version: 1.2.2
+Current version: 1.2.2 [(Install)](/-/raw/master/Bugzilla/bugzilla-hide-bots-comments.user.js)
 
 Hides bots comment in bugzilla by default. Also add links to quickly collapse or expand them as needed.
 
@@ -38,7 +38,7 @@ Hides bots comment in bugzilla by default. Also add links to quickly collapse or
 
 ### [bugzilla-redirect-to-com.user.js](Bugzilla/bugzilla-redirect-to-com.user.js)
 
-Last version: 1.1.1
+Current version: 1.1.1 [(Install)](/-/raw/master/Bugzilla/bugzilla-redirect-to-com.user.js)
 
 Redirects all bugzilla.opensuse.org bug pages to bugzilla.suse.com. The redirecting is done when opening a link to a bug on bugzilla.opensuse.org.
 
@@ -46,13 +46,13 @@ Redirects all bugzilla.opensuse.org bug pages to bugzilla.suse.com. The redirect
 
 ### [smash-login-redirection.user.js](SMASH/smash-login-redirection.user.js)
 
-Last version: 1.1.1
+Current version: 1.1.1 [(Install)](/-/raw/master/SMASH/smash-login-redirection.user.js)
 
 Redirects login page to actual page - using the next search parameter - if the user is already logged in.
 
 ### [smash-opensuse-actions.user.js](SMASH/smash-opensuse-actions.user.js)
 
-Last version: 1.2.1
+Current version: 1.2.1 [(Install)](/-/raw/master/SMASH/smash-opensuse-actions.user.js)
 
 Adds a button to open a bug in the openSUSE bugzilla tracker. Also updates the action item in the Actions dropdown with the same link.
 
@@ -62,7 +62,7 @@ Adds a button to open a bug in the openSUSE bugzilla tracker. Also updates the a
 
 ### [smash-useful-links.user.js](SMASH/smash-useful-links.user.js)
 
-Last version: 1.1.1
+Current version: 1.1.1 [(Install)](/-/raw/master/SMASH/smash-useful-links.user.js)
 
 Adds links to the package support status page and package changes file in the SMASH issue page.
 
@@ -76,7 +76,7 @@ Adds links to the package support status page and package changes file in the SM
 
 ### [smelt-better-ibs-integration.user.js](SMELT/smelt-better-ibs-integration.user.js)
 
-Last version: 1.1
+Current version: 1.1 [(Install)](/-/raw/master/SMELT/smelt-better-ibs-integration.user.js)
 
 Add links to IBS project (patchinfo and package repository) to the SMELT incident page.
 
@@ -88,9 +88,8 @@ Add links to IBS project (patchinfo and package repository) to the SMELT inciden
 
 # Installation
 
-These userscripts should be used with browsers addons such as Violentmonkey, Firemonkey, Greasemonkey or Tampermonkey.  
-To ease the installation process, you can use an HTTP server serving the repository directory and install them directly from the webpage.  
-For example, the command `python3 -m http.server` will create a simple HTTP server that serves files from the current directory.
+These userscripts should be used with browsers addons such as Violentmonkey, Firemonkey, Greasemonkey or Tampermonkey.
+To install the script you can use the `Install` link next to the script version.
 
 # Hooks
 
