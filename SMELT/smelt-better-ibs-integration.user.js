@@ -4,7 +4,7 @@
 // @match       https://smelt.suse.de/incident/*
 // @run-at      document-end
 // @grant       none
-// @version     1.1
+// @version     1.1.0
 // @author      gsonnu
 // @description Add links to IBS project (patchinfo and package repository) to the SMELT incident page
 // ==/UserScript==

@@ -76,7 +76,7 @@ Adds links to the package support status page and package changes file in the SM
 
 ### [smelt-better-ibs-integration.user.js](SMELT/smelt-better-ibs-integration.user.js)
 
-Current version: 1.1 [(Install)](/-/raw/master/SMELT/smelt-better-ibs-integration.user.js)
+Current version: 1.1.0 [(Install)](/-/raw/master/SMELT/smelt-better-ibs-integration.user.js)
 
 Add links to IBS project (patchinfo and package repository) to the SMELT incident page.
 
