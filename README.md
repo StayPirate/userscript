@@ -6,6 +6,7 @@
     - [bugzilla-hide-bots-comments.user.js](#bugzilla-hide-bots-commentsuserjs)
     - [bugzilla-redirect-to-com.user.js](#bugzilla-redirect-to-comuserjs)
   - [SMASH](#smash)
+    - [smash-add-bugzilla-summary.user.js](#smash-add-bugzilla-summaryuserjs)
     - [smash-login-redirection.user.js](#smash-login-redirectionuserjs)
     - [smash-opensuse-actions.user.js](#smash-opensuse-actionsuserjs)
     - [smash-useful-links.user.js](#smash-useful-linksuserjs)
@@ -43,6 +44,16 @@ Current version: 1.1.1
 Redirects all bugzilla.opensuse.org bug pages to bugzilla.suse.com. The redirecting is done when opening a link to a bug on bugzilla.opensuse.org.
 
 ## SMASH
+
+### [smash-add-bugzilla-summary.user.js](SMASH/smash-add-bugzilla-summary.user.js)
+
+Current version: 1.0.0
+
+Add summary for Bugzilla bugs in the Overview tab.
+
+#### Screenshots
+
+![](images/smash-add-bugzilla-summary.png)
 
 ### [smash-login-redirection.user.js](SMASH/smash-login-redirection.user.js)
 
