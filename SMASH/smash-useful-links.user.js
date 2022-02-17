@@ -4,9 +4,9 @@
 // @match       https://smash.suse.de/issue/*
 // @run-at      document-end
 // @grant       none
-// @version     1.1.1
+// @version     1.2.0
 // @author      gsonnu
-// @description Adds links to the package support status page and package changes file in the SMASH issue page
+// @description Adds links to the package, package support status page and package changes file in the SMASH issue page
 // ==/UserScript==
 
 
@@ -31,6 +31,8 @@
 
         target.appendChild(spc);
         target.appendChild(link);
+
+        return link;
     }
 
     function add_ibs_links(matrix, url) {
@@ -40,8 +42,14 @@
             let target = row.querySelector('td:nth-child(3)');
             let proj = target.textContent.trim();
 
+            target.textContent = '';
+
+            let l = add_link(`${url}/package/show/${proj}/${pkg}`, proj, target);
+            l.setAttribute('style', 'color: unset;');
+
             add_link(`${url}/package/view_file/${proj}/${pkg}/${pkg}.changes?expand=1`,
                      '(changes)', target);
+
         }
     }
 
