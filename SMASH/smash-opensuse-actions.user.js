@@ -4,7 +4,7 @@
 // @match       https://smash.suse.de/issue/*
 // @run-at      document-end
 // @grant       none
-// @version     1.2.1
+// @version     1.2.2
 // @author      gsonnu
 // @description Adds a button to open a bug in the openSUSE bugzilla tracker. Also updates the action item in the Actions dropdown with the same link
 // ==/UserScript==
@@ -37,7 +37,7 @@
 
     url.searchParams.set('product', 'openSUSE Distribution');
     url.searchParams.set('component', 'Security');
-    url.searchParams.set('version', 'Leap 15.3');
+    url.searchParams.set('version', 'Leap 15.4');
     url.searchParams.set('cc', '');
     url.searchParams.set('qa_contact', 'security-team@suse.de');
 
