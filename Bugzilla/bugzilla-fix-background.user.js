@@ -2,9 +2,9 @@
 // @name        Bugzilla - Fix background
 // @namespace   SUSE SecTools
 // @match       https://bugzilla.suse.com/*
-// @run-at      document-end
+// @run-at      document-idle
 // @grant       none
-// @version     1.1.1
+// @version     1.1.2
 // @author      gsonnu
 // @description Fixes the bugzilla background for better integration with the Dark Reader addon
 // ==/UserScript==

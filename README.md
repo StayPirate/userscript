@@ -21,7 +21,7 @@
 
 ### [bugzilla-fix-background.user.js](Bugzilla/bugzilla-fix-background.user.js)
 
-Current version: 1.1.1
+Current version: 1.1.2
 
 Fixes the bugzilla background for better integration with the Dark Reader addon.
 
