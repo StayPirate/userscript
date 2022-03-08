@@ -5,6 +5,8 @@
     - [bugzilla-fix-background.user.js](#bugzilla-fix-backgrounduserjs)
     - [bugzilla-hide-bots-comments.user.js](#bugzilla-hide-bots-commentsuserjs)
     - [bugzilla-redirect-to-com.user.js](#bugzilla-redirect-to-comuserjs)
+  - [IBS](#ibs)
+    - [ibs-better-title.user.js](#ibs-better-titleuserjs)
   - [SMASH](#smash)
     - [smash-add-bugzilla-summary.user.js](#smash-add-bugzilla-summaryuserjs)
     - [smash-login-redirection.user.js](#smash-login-redirectionuserjs)
@@ -42,6 +44,14 @@ Hides bots comment in bugzilla by default. Also add links to quickly collapse or
 Current version: 1.1.1
 
 Redirects all bugzilla.opensuse.org bug pages to bugzilla.suse.com. The redirecting is done when opening a link to a bug on bugzilla.opensuse.org.
+
+## IBS
+
+### [ibs-better-title.user.js](IBS/ibs-better-title.user.js)
+
+Current version: 1.0.0
+
+Changes the title in the IBS file view to also show the project.
 
 ## SMASH
 
