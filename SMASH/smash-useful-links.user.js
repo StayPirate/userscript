@@ -9,9 +9,7 @@
 // @description Adds links to the package, package support status page and package changes file in the SMASH issue page
 // ==/UserScript==
 
-
 (function() {
-
     const smelt_url = 'https://smelt.suse.de';
     const ibs_url = 'https://build.suse.de';
 
@@ -63,5 +61,4 @@
             add_link(`${url}/maintained/?q=${name}`, name, pkg);
         }
     }
-
-})()
+})();

@@ -22,4 +22,4 @@
 
     console.log(url.href);
     window.location.replace(url.href);
-})()
+})();

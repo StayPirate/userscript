@@ -10,7 +10,6 @@
 // ==/UserScript==
 
 (function() {
-
     function updateElement(li, btn, proj) {
         btn.title = `${btn.title} (${proj})`;
         li.firstChild.nodeValue = `${proj} ${li.firstChild.nodeValue}`;
@@ -55,5 +54,4 @@
     console.log(url.href)
 
     item.href = url.href;
-
-})()
+})();

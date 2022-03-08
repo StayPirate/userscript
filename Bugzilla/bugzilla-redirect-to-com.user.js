@@ -13,5 +13,4 @@
     let url = new URL(window.location.href);
     url.hostname = 'bugzilla.suse.com';
     window.location.replace(url.href)
-
-})()
+})();
