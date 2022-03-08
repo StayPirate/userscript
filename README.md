@@ -48,9 +48,9 @@ Redirects all bugzilla.opensuse.org bug pages to bugzilla.suse.com. The redirect
 
 ### [ibs-better-title.user.js](IBS/ibs-better-title.user.js)
 
-Current version: 1.0.0
+Current version: 1.0.1
 
-Changes the title in the IBS file view to also show the project.
+Changes the title in IBS project/package/file view.
 
 ## SMASH
 

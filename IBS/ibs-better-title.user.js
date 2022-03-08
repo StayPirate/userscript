@@ -2,19 +2,28 @@
 // @name        IBS - Better Title
 // @namespace   SUSE SecTools
 // @match       https://build.suse.de/package/view_file/*
+// @match       https://build.suse.de/package/show/*
+// @match       https://build.suse.de/project/show/*
 // @run-at      document-end
 // @grant       none
-// @version     1.0.0
+// @version     1.0.1
 // @author      gsonnu
-// @description Changes the title in the IBS file view to also show the project
+// @description Changes the title in IBS project/package/file view
 // ==/UserScript==
 
 (function(){
     const sep = ' / '
     let title = '';
+
     for (let crumb of document.querySelectorAll('#breadcrumbs li.breadcrumb-item')) {
-        title += `${crumb.textContent.trim()}${sep}`;
+        let trimmed = crumb.textContent.trim();
+
+        if (trimmed === 'Overview')
+            break;
+
+        title += `${trimmed}${sep}`;
     }
 
-    document.title = title.slice(0, -sep.length);
+    let a = document.title.split('-')
+    document.title = `${title.slice(0, -sep.length)} - ${a[a.length - 1].trim()}`;
 })();
