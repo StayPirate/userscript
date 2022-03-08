@@ -9,7 +9,6 @@
     - [ibs-better-title.user.js](#ibs-better-titleuserjs)
   - [SMASH](#smash)
     - [smash-add-bugzilla-summary.user.js](#smash-add-bugzilla-summaryuserjs)
-    - [smash-login-redirection.user.js](#smash-login-redirectionuserjs)
     - [smash-opensuse-actions.user.js](#smash-opensuse-actionsuserjs)
     - [smash-useful-links.user.js](#smash-useful-linksuserjs)
   - [SMELT](#smelt)
@@ -64,12 +63,6 @@ Add summary for Bugzilla bugs in the Overview tab.
 #### Screenshots
 
 ![](images/smash-add-bugzilla-summary.png)
-
-### [smash-login-redirection.user.js](SMASH/smash-login-redirection.user.js)
-
-Current version: 1.1.1
-
-Redirects login page to actual page - using the next search parameter - if the user is already logged in.
 
 ### [smash-opensuse-actions.user.js](SMASH/smash-opensuse-actions.user.js)
 
