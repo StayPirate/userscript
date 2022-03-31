@@ -2,9 +2,10 @@
 // @name        Bugzilla - Hide bots comments
 // @namespace   SUSE SecTools
 // @match       https://bugzilla.suse.com/show_bug.cgi?*
+// @match       https://bugzilla.opensuse.org/show_bug.cgi?*
 // @run-at      document-end
 // @grant       none
-// @version     1.2.4
+// @version     1.2.5
 // @author      gsonnu
 // @description Hides bots comment in bugzilla by default. Also add links to quickly collapse or expand them as needed
 // ==/UserScript==
