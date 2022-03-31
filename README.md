@@ -2,6 +2,7 @@
 
 - [Userscripts](#userscripts)
   - [Bugzilla](#bugzilla)
+    - [bugzilla-add-suse-cve-links.user.js](#bugzilla-add-suse-cve-linksuserjs)
     - [bugzilla-fix-background.user.js](#bugzilla-fix-backgrounduserjs)
     - [bugzilla-hide-bots-comments.user.js](#bugzilla-hide-bots-commentsuserjs)
     - [bugzilla-redirect-to-com.user.js](#bugzilla-redirect-to-comuserjs)
@@ -19,6 +20,18 @@
 # Userscripts
 
 ## Bugzilla
+
+### [bugzilla-add-suse-cve-links.user.js](Bugzilla/bugzilla-add-suse-cve-links.user.js)
+
+Current version: 1.0.0
+
+Add links to SUSE CVE pages in title and comments.
+
+#### Screenshots
+
+![](images/bugzilla-add-suse-cve-links_comments.png)
+
+![](images/bugzilla-add-suse-cve-links_title.png)
 
 ### [bugzilla-fix-background.user.js](Bugzilla/bugzilla-fix-background.user.js)
 
@@ -76,13 +89,15 @@ Adds a button to open a bug in the openSUSE bugzilla tracker. Also updates the a
 
 ### [smash-useful-links.user.js](SMASH/smash-useful-links.user.js)
 
-Current version: 1.2.0
+Current version: 1.3.0
 
-Adds links to the package, package support status page and package changes file in the SMASH issue page.
+Adds links to the package, package support status page, package changes file & SUSE CVE page in the SMASH issue page.
 
 #### Screenshots
 
 ![](images/smash-useful-links_changes.png)
+
+![](images/smash-useful-links_cve.png)
 
 ![](images/smash-useful-links_package.png)
 
