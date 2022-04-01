@@ -23,7 +23,7 @@
 
 ### [bugzilla-add-suse-cve-links.user.js](Bugzilla/bugzilla-add-suse-cve-links.user.js)
 
-Current version: 1.0.1
+Current version: 1.0.2
 
 Add links to SUSE CVE pages in title and comments.
 
