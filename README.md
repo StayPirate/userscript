@@ -89,9 +89,9 @@ Adds a button to open a bug in the openSUSE bugzilla tracker. Also updates the a
 
 ### [smash-useful-links.user.js](SMASH/smash-useful-links.user.js)
 
-Current version: 1.3.0
+Current version: 1.4.0
 
-Adds links to the package, package support status page, package changes file & SUSE CVE page in the SMASH issue page.
+Adds links to the package, package support status page, package changes and spec file & SUSE CVE page in the SMASH issue page.
 
 #### Screenshots
 
@@ -102,6 +102,8 @@ Adds links to the package, package support status page, package changes file & S
 ![](images/smash-useful-links_package.png)
 
 ![](images/smash-useful-links_smelt.png)
+
+![](images/smash-useful-links_spec.png)
 
 ## SMELT
 

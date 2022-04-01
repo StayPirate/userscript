@@ -4,9 +4,9 @@
 // @match       https://smash.suse.de/issue/*
 // @run-at      document-end
 // @grant       none
-// @version     1.3.0
+// @version     1.4.0
 // @author      gsonnu
-// @description Adds links to the package, package support status page, package changes file & SUSE CVE page in the SMASH issue page
+// @description Adds links to the package, package support status page, package changes and spec file & SUSE CVE page in the SMASH issue page
 // ==/UserScript==
 
 
@@ -31,7 +31,7 @@
     }
 
     function createTextNode(text) {
-        if (text == null || typeof(text) === 'undefined')
+        if (typeof(text) === 'undefined' || text === null)
             return null;
 
         return document.createTextNode(text);
@@ -42,20 +42,47 @@
         let pre = createTextNode(prefix);
         let suf = createTextNode(suffix);
 
-        if (pre)
-            target.appendChild(pre);
+        if (target) {
+            if (pre)
+                target.appendChild(pre);
 
-        target.appendChild(link);
+            target.appendChild(link);
 
-        if (suf)
-            target.appendChild(suf);
+            if (suf)
+                target.appendChild(suf);
+        }
 
         return link;
+
+    }
+
+    function addIcon(target, classes, title='') {
+        let icon = document.createElement('i');
+
+        if (title)
+            icon.setAttribute('title', title);
+
+        icon.classList.add(...classes);
+
+        target.appendChild(icon);
+
+        return icon;
+    }
+
+    function addButton(url, target, icon, title) {
+        let l = addLink(url, '', target, null, null);
+        l.setAttribute('style', 'color: unset;');
+
+        addIcon(l, ['fas', icon], title);
+
+        return l;
     }
 
     function addIbsLinks(matrix, url) {
         if (!matrix)
             return;
+
+        let space = createTextNode(' ');
 
         for (let elem of matrix.querySelectorAll('tbody')) {
             let row = elem.querySelector('tr.software_row:not(.software_sub-row)');
@@ -65,12 +92,19 @@
 
             target.textContent = '';
 
-            let l = addLink(`${url}/package/show/${proj}/${pkg}`, proj, target);
-            l.setAttribute('style', 'color: unset;');
+            let codestream = addLink(`${url}/package/show/${proj}/${pkg}`, proj);
+            codestream.setAttribute('style', 'color: unset;');
 
-            addLink(`${url}/package/view_file/${proj}/${pkg}/${pkg}.changes?expand=1`,
-                     '(changes)', target);
-
+            target.append(codestream,
+                          space,
+                          space.cloneNode(),
+                          addButton(`${url}/package/view_file/${proj}/${pkg}/${pkg}.changes?expand=1`,
+                                    null, 'fa-history', 'Changelog'),
+                          space.cloneNode(),
+                          addButton(`${url}/package/view_file/${proj}/${pkg}/${pkg}.spec?expand=1`,
+                                    null, 'fa-cog', 'SPEC file'),
+                          space.cloneNode(),
+                         );
         }
     }
 
