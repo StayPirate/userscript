@@ -3,6 +3,7 @@
 - [Userscripts](#userscripts)
   - [Bugzilla](#bugzilla)
     - [bugzilla-add-suse-cve-links.user.js](#bugzilla-add-suse-cve-linksuserjs)
+    - [bugzilla-bug-status-in-title.user.js](#bugzilla-bug-status-in-titleuserjs)
     - [bugzilla-fix-background.user.js](#bugzilla-fix-backgrounduserjs)
     - [bugzilla-hide-bots-comments.user.js](#bugzilla-hide-bots-commentsuserjs)
     - [bugzilla-redirect-to-com.user.js](#bugzilla-redirect-to-comuserjs)
@@ -32,6 +33,12 @@ Add links to SUSE CVE pages in title and comments.
 ![](images/bugzilla-add-suse-cve-links_comments.png)
 
 ![](images/bugzilla-add-suse-cve-links_title.png)
+
+### [bugzilla-bug-status-in-title.user.js](Bugzilla/bugzilla-bug-status-in-title.user.js)
+
+Current version: 1.0.0
+
+Puts the bug status (only if closed) in the page title.
 
 ### [bugzilla-fix-background.user.js](Bugzilla/bugzilla-fix-background.user.js)
 
