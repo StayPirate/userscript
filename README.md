@@ -42,7 +42,7 @@ Puts the bug status (only if closed) in the page title.
 
 ### [bugzilla-fix-background.user.js](Bugzilla/bugzilla-fix-background.user.js)
 
-Current version: 1.1.2
+Current version: 1.2.0
 
 Fixes the bugzilla background for better integration with the Dark Reader addon.
 
