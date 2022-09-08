@@ -4,7 +4,7 @@
 // @match       https://smash.suse.de/issue/*
 // @run-at      document-end
 // @grant       none
-// @version     1.2.3
+// @version     1.2.4
 // @author      gsonnu
 // @description Adds a button to open a bug in the openSUSE bugzilla tracker. Also updates the action item in the Actions dropdown with the same link
 // ==/UserScript==
@@ -54,6 +54,10 @@
 
     // fix multiple CVES
     components[1] = [...new Set(components[1].split(','))].join(',');
+
+    // kernel-source only
+    components[2] = components[2].replace(/(?:kernel-source(?:-(?:rt|azure))?[, ]*)+/,
+                                          'kernel-source')
 
     url.searchParams.set('short_desc', components.join(': '));
 

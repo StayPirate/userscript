@@ -86,7 +86,7 @@ Add summary for Bugzilla bugs in the Overview tab.
 
 ### [smash-opensuse-actions.user.js](SMASH/smash-opensuse-actions.user.js)
 
-Current version: 1.2.3
+Current version: 1.2.4
 
 Adds a button to open a bug in the openSUSE bugzilla tracker. Also updates the action item in the Actions dropdown with the same link.
 
