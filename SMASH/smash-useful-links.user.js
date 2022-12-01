@@ -4,7 +4,7 @@
 // @match       https://smash.suse.de/issue/*
 // @run-at      document-end
 // @grant       none
-// @version     1.4.0
+// @version     1.5.0
 // @author      gsonnu
 // @description Adds links to the package, package support status page, package changes and spec file & SUSE CVE page in the SMASH issue page
 // ==/UserScript==
@@ -16,11 +16,22 @@
     const ibsUrl = 'https://build.suse.de';
     const suseCveUrl = 'https://www.suse.com';
 
-    let swMatrix = document.querySelector('#software-matrix');
+    let swList = null;
 
-    addIbsLinks(swMatrix, ibsUrl);
-    addSmeltLinks(swMatrix, smeltUrl);
-    addSuseCveLinks(suseCveUrl);
+    execute();
+
+    function execute() {
+        if (!swList) {
+            swList = document.querySelector('#software-list');
+        }
+
+        if (!swList || swList.querySelector('.placeholder-glow')) {
+            setTimeout(execute, 300);
+        } else {
+            editSoftwareList(swList);
+            addSuseCveLinks(suseCveUrl);
+        }
+    }
 
     function createAnchor(url, text) {
         let link = document.createElement('a');
@@ -56,13 +67,14 @@
 
     }
 
-    function addIcon(target, classes, title='') {
+    function addIcon(target, classes, iconId, title='') {
         let icon = document.createElement('i');
 
         if (title)
             icon.setAttribute('title', title);
 
         icon.classList.add(...classes);
+        icon.textContent = iconId;
 
         target.appendChild(icon);
 
@@ -73,68 +85,70 @@
         let l = addLink(url, '', target, null, null);
         l.setAttribute('style', 'color: unset;');
 
-        addIcon(l, ['fas', icon], title);
+        addIcon(l, ['eos-icons', 'me-2'], icon, title);
 
         return l;
     }
 
-    function addIbsLinks(matrix, url) {
-        if (!matrix)
+    function addSMELTlink(pkg, name, url) {
+        pkg.textContent = '';
+
+        addLink(`${url}/maintained/?q=${name}`, name, pkg);
+    }
+
+    function addIBSlink(elem, pkg, url, space) {
+        elem = elem.parentElement.parentElement;
+
+        for (let e of elem.querySelectorAll('i[title="Codestream"]')) {
+            let parent = e.parentNode;
+            let proj = e.nextSibling.textContent.trim();
+
+            let link = addLink(`${url}/package/show/${proj}/${pkg}`, proj);
+            link.setAttribute('style', 'color: unset;');
+
+            parent.removeChild(e.nextSibling);
+
+            parent.append(link,
+                          space,
+                          space.cloneNode(),
+                          addButton(`${url}/package/view_file/${proj}/${pkg}/${pkg}.changes?expand=1`,
+                                    null, 'history', 'Changelog'),
+                          space.cloneNode(),
+                          addButton(`${url}/package/view_file/${proj}/${pkg}/${pkg}.spec?expand=1`,
+                                    null, 'build', 'SPEC file'),
+                          space.cloneNode(),
+                         );
+
+        }
+    }
+
+    function editSoftwareList(list) {
+        if (!list)
             return;
 
         let space = createTextNode(' ');
 
-        for (let elem of matrix.querySelectorAll('tbody')) {
-            let row = elem.querySelector('tr.software_row:not(.software_sub-row)');
-            let pkg = row.getAttribute('data-package');
-            let target = row.querySelector('td:nth-child(3)');
-            let proj = target.textContent.trim();
-
-            target.textContent = '';
-
-            let codestream = addLink(`${url}/package/show/${proj}/${pkg}`, proj);
-            codestream.setAttribute('style', 'color: unset;');
-
-            target.append(codestream,
-                          space,
-                          space.cloneNode(),
-                          addButton(`${url}/package/view_file/${proj}/${pkg}/${pkg}.changes?expand=1`,
-                                    null, 'fa-history', 'Changelog'),
-                          space.cloneNode(),
-                          addButton(`${url}/package/view_file/${proj}/${pkg}/${pkg}.spec?expand=1`,
-                                    null, 'fa-cog', 'SPEC file'),
-                          space.cloneNode(),
-                         );
-        }
-    }
-
-    function addSmeltLinks(matrix, url) {
-        if (!matrix)
-            return;
-
-        for (let elem of matrix.querySelectorAll('thead')) {
-            let pkg = elem.querySelector('h4');
+        for (let pkg of list.querySelectorAll('h3[id*="issue-software"]')) {
             let name = pkg.textContent.trim();
 
-            pkg.textContent = '';
+            addSMELTlink(pkg, name, smeltUrl);
+            addIBSlink(pkg, name, ibsUrl, space);
 
-            addLink(`${url}/maintained/?q=${name}`, name, pkg);
         }
     }
 
     function addSuseCveLinks(url) {
-        const cveRegex = /(CVE-[0-9]{4}-[0-9]*):/;
+        for (let elem of document.querySelectorAll('button[id*="issue-rating-"]')) {
+            let cve = elem.textContent.trim()
 
-        for (let elem of document.querySelectorAll('.ratings-columns h4')) {
-            let cve = elem.textContent.trim().match(cveRegex);
+            console.log(elem,cve, elem.textContent.trim());
 
-            if ((!cve) || (cve.length != 2))
+            if (!cve)
                 continue;
 
-            cve = cve[1];
             elem.textContent = '';
 
-            let l = addLink(`${url}/security/cve/${cve}.html`, cve, elem, null, ':');
+            let l = addLink(`${url}/security/cve/${cve}.html`, cve, elem);
             l.setAttribute('style', 'color: unset;');
         }
     }
