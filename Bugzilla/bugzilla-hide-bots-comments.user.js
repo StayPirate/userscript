@@ -5,7 +5,7 @@
 // @match       https://bugzilla.opensuse.org/show_bug.cgi?*
 // @run-at      document-end
 // @grant       none
-// @version     1.2.5
+// @version     1.2.6
 // @author      gsonnu
 // @description Hides bots comment in bugzilla by default. Also add links to quickly collapse or expand them as needed
 // ==/UserScript==
