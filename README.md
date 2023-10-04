@@ -48,7 +48,7 @@ Fixes the bugzilla background for better integration with the Dark Reader addon.
 
 ### [bugzilla-hide-bots-comments.user.js](Bugzilla/bugzilla-hide-bots-comments.user.js)
 
-Current version: 1.2.7
+Current version: 1.3.0
 
 Hides bots comment in bugzilla by default. Also add links to quickly collapse or expand them as needed.
 
