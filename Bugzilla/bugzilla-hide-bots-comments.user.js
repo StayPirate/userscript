@@ -33,9 +33,9 @@
         else if (typeof(pattern) !== 'undefined')
             check_comment = (t, p) => (t === '') | (t.startsWith(p))
         else
-            check_comment = (t, p) => true
+            check_comment = (t, p) => false
 
-        if check_comment(text, pattern)
+        if (check_comment(text, pattern))
             botsComments.push(c);
     }
 
