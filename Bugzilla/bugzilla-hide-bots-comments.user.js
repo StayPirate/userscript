@@ -5,7 +5,7 @@
 // @match       https://bugzilla.opensuse.org/show_bug.cgi?*
 // @run-at      document-end
 // @grant       none
-// @version     1.3.0
+// @version     1.3.1
 // @author      gsonnu
 // @description Hides bots comment in bugzilla by default. Also add links to quickly collapse or expand them as needed
 // ==/UserScript==
@@ -24,21 +24,30 @@
 
     const embargoes = 'This is an embargoed bug. This means that this information is not public.';
 
+
+    // pre process list instead of doing it for every comment
+    for (const user in bots) {
+        let pattern = bots[user];
+
+        if (pattern instanceof RegExp)
+            bots[user] = (t) => pattern.test(t);
+        else if (pattern === '')
+            bots[user] = (t) => true;
+        else
+            bots[user] = (t) => t.startsWith(pattern);
+    }
+
+    let is_embargo = (t) => t.startsWith(embargoes);
+
+    // start processing comments
     let botsComments = [];
 
     for (let c of document.querySelectorAll('.bz_comment_head')) {
         let user = c.querySelector('.bz_comment_user a.email')['href'].replace('mailto:', '');
-        let pattern = bots[user];
+        let is_bot = bots[user] || ((t) => false);
         let text = c.parentNode.querySelector('.bz_comment_text').textContent.trim()
 
-        if (pattern instanceof RegExp)
-            check_comment = (t, p) => p.test(t);
-        else if (typeof(pattern) !== 'undefined')
-            check_comment = (t, p) => (t === '') | (t.startsWith(p));
-        else
-            check_comment = (t, p) => t.startsWith(embargoes);
-
-        if (check_comment(text, pattern))
+        if (is_bot(text) || is_embargo(text))
             botsComments.push(c);
     }
 
