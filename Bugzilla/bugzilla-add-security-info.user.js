@@ -5,7 +5,7 @@
 // @match       https://bugzilla.opensuse.org/show_bug.cgi?*
 // @run-at      document-end
 // @grant       none
-// @version     1.0.0
+// @version     1.0.1
 // @author      gsonnu
 // @description Adds security-relevant information to Bugzilla bugs: latest CRD specified, SUSE CVSS scores, submissions
 // ==/UserScript==
@@ -30,11 +30,11 @@
 
     addSpacer(table);
 
-    if (cves.length > 0)
-        addCVEs(table, cves);
-
     if (crd)
         addCRD(table, crd);
+
+    if (cves.length > 0)
+        addCVEs(table, cves);
 
     if (Object.keys(submissions).length > 0)
         addSubmissions(table, submissions);
@@ -85,6 +85,7 @@
     function addCVEs(table, cves) {
         let label = 'CVSS Score';
         let cont = document.createElement('div');
+        cont.setAttribute('id', 'cvss-score-table')
 
         if (cves.length == 1) {
             addRow(table, document.createTextNode(`${cves[0].cvss.toFixed(1)} (${cves[0].severity})`), label);
@@ -93,7 +94,6 @@
 
         // multiple CVEs
         label += 's';
-        cont.appendChild(document.createElement('br'));
 
         for (let cve of cves.toSorted((a, b) => -(a.cvss - b.cvss))) {
             cont.appendChild(document.createTextNode(`${cve.id}: ${cve.cvss.toFixed(1)} (${cve.severity})`));
@@ -151,7 +151,6 @@
 
     function addSubmissions(table, subs) {
         let cont = document.createElement('div');
-        cont.appendChild(document.createElement('br'));
 
         for (let cs of Object.keys(subs).toSorted()) {
             let span = document.createElement('span');

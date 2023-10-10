@@ -25,7 +25,7 @@
 
 ### [bugzilla-add-security-info.user.js](Bugzilla/bugzilla-add-security-info.user.js)
 
-Current version: 1.0.0
+Current version: 1.0.1
 
 Adds security-relevant information to Bugzilla bugs: latest CRD specified, SUSE CVSS scores, submissions.
 
@@ -35,7 +35,7 @@ Adds security-relevant information to Bugzilla bugs: latest CRD specified, SUSE 
 
 ### [bugzilla-add-suse-cve-links.user.js](Bugzilla/bugzilla-add-suse-cve-links.user.js)
 
-Current version: 1.0.5
+Current version: 1.0.6
 
 Add links to SUSE CVE pages in title and comments.
 
