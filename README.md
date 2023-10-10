@@ -36,7 +36,7 @@ Adds security-relevant information to Bugzilla bugs: latest CRD specified, SUSE 
 
 ### [bugzilla-add-suse-cve-links.user.js](Bugzilla/bugzilla-add-suse-cve-links.user.js)
 
-Current version: 1.0.6
+Current version: 1.0.7
 
 Add links to SUSE CVE pages in title and comments.
 
