@@ -10,11 +10,11 @@
 // @require     ./bugzilla-add-security-info.user.js
 // @require     ./bugzilla-hide-bots-comments.user.js
 // @require     ./bugzilla-add-suse-cve-links.user.js
-// @version     0.0.2
+// @version     1.0.0
 // @author      gsonnu
-// @description Meta userscript
+// @description Meta userscript containing all Bugzilla graphical addition and fixes
 // ==/UserScript==
 
-(function (){
+(function () {
     ;
 })();
