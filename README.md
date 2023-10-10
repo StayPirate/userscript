@@ -2,6 +2,7 @@
 
 - [Userscripts](#userscripts)
   - [Bugzilla](#bugzilla)
+    - [bugzilla-add-security-info.user.js](#bugzilla-add-security-infouserjs)
     - [bugzilla-add-suse-cve-links.user.js](#bugzilla-add-suse-cve-linksuserjs)
     - [bugzilla-bug-status-in-title.user.js](#bugzilla-bug-status-in-titleuserjs)
     - [bugzilla-fix-background.user.js](#bugzilla-fix-backgrounduserjs)
@@ -21,6 +22,16 @@
 # Userscripts
 
 ## Bugzilla
+
+### [bugzilla-add-security-info.user.js](Bugzilla/bugzilla-add-security-info.user.js)
+
+Current version: 1.0.0
+
+Adds security-relevant information to Bugzilla bugs: latest CRD specified, SUSE CVSS scores, submissions.
+
+#### Screenshots
+
+![](images/bugzilla-add-security-info.png)
 
 ### [bugzilla-add-suse-cve-links.user.js](Bugzilla/bugzilla-add-suse-cve-links.user.js)
 
