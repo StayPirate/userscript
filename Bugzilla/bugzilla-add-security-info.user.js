@@ -5,7 +5,7 @@
 // @match       https://bugzilla.opensuse.org/show_bug.cgi?*
 // @run-at      document-end
 // @grant       none
-// @version     1.0.1
+// @version     1.0.2
 // @author      gsonnu
 // @description Adds security-relevant information to Bugzilla bugs: latest CRD specified, SUSE CVSS scores, submissions
 // ==/UserScript==
@@ -124,24 +124,38 @@
 
 
     function getSubmissions(comment, subs) {
-        const ignore_products = /Channels/;
-        const ignore_packages = /Live-Patch/;
-        const rr_regex = /(?<url>https:[^\s]+) (?<product>[^\s]+) \/ (?<package>[^\s]+)/g;
+        const ignore_products = /Channels/;   // these are RR, only seen for kernel
+        const ignore_packages = /Live-Patch/; // filter out all the livepatch submissions
+        const rr_regex = /(?<url>https:[^\s]+) (?<product>[^\s]+) \/ (?<packages>[^\s]+)/g;
         const id_regex = /(\d+)\/?$/;
 
         let match;
         // get submissions
         while ((match = rr_regex.exec(comment)) !== null) {
-            if ((ignore_products.test(match.groups.product)) || (ignore_packages.test(match.groups.package)))
+            if (ignore_products.test(match.groups.product))
                 continue;
 
-            let key = `${match.groups.product}/${match.groups.package}`;
+            // workaround for submissions with multiple packages, e.g. kernel
+            // TODO: extend for packages other than kernel-source
+
+            let pkg;
+            let packages = match.groups.packages.split('+');
+
+            if (packages.length > 1)
+                pkg = packages.find((e) => e.startsWith('kernel-source')) || match.groups.packages;
+            else
+                pkg = packages[0];
+
+            if (ignore_packages.test(pkg))
+              continue;
+
+            let key = `${match.groups.product}/${pkg}`;
 
             if (typeof(subs[key]) === 'undefined')
                 subs[key] = [];
 
             subs[key].push({product: match.groups.product,
-                            package: match.groups.package,
+                            package: pkg,
                             url: match.groups.url,
                             id: parseInt(id_regex.exec(match.groups.url)[1])});
 

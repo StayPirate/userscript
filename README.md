@@ -7,6 +7,7 @@
     - [bugzilla-bug-status-in-title.user.js](#bugzilla-bug-status-in-titleuserjs)
     - [bugzilla-fix-background.user.js](#bugzilla-fix-backgrounduserjs)
     - [bugzilla-hide-bots-comments.user.js](#bugzilla-hide-bots-commentsuserjs)
+    - [bugzilla-meta-suse-beautifier.user.js](#bugzilla-meta-suse-beautifieruserjs)
     - [bugzilla-redirect-to-com.user.js](#bugzilla-redirect-to-comuserjs)
   - [IBS](#ibs)
     - [ibs-better-title.user.js](#ibs-better-titleuserjs)
@@ -25,7 +26,7 @@
 
 ### [bugzilla-add-security-info.user.js](Bugzilla/bugzilla-add-security-info.user.js)
 
-Current version: 1.0.1
+Current version: 1.0.2
 
 Adds security-relevant information to Bugzilla bugs: latest CRD specified, SUSE CVSS scores, submissions.
 
@@ -68,6 +69,12 @@ Hides bots comment in bugzilla by default. Also add links to quickly collapse or
 ![](images/bugzilla-hide-bots-comments.png)
 
 ![](images/bugzilla-hide-bots-comments_links.png)
+
+### [bugzilla-meta-suse-beautifier.user.js](Bugzilla/bugzilla-meta-suse-beautifier.user.js)
+
+Current version: 0.0.1
+
+Meta userscript.
 
 ### [bugzilla-redirect-to-com.user.js](Bugzilla/bugzilla-redirect-to-com.user.js)
 
