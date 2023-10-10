@@ -72,7 +72,7 @@ Hides bots comment in bugzilla by default. Also add links to quickly collapse or
 
 ### [bugzilla-meta-suse-beautifier.user.js](Bugzilla/bugzilla-meta-suse-beautifier.user.js)
 
-Current version: 0.0.1
+Current version: 0.0.2
 
 Meta userscript.
 
