@@ -16,7 +16,10 @@
     - [smash-opensuse-actions.user.js](#smash-opensuse-actionsuserjs)
     - [smash-useful-links.user.js](#smash-useful-linksuserjs)
   - [SMELT](#smelt)
+    - [smelt-autorefresh-table.user.js](#smelt-autorefresh-tableuserjs)
     - [smelt-better-ibs-integration.user.js](#smelt-better-ibs-integrationuserjs)
+    - [smelt-highlight-login.user.js](#smelt-highlight-loginuserjs)
+    - [smelt-only-show-security-submissions.user.js](#smelt-only-show-security-submissionsuserjs)
 - [Installation](#installation)
 - [Hooks](#hooks)
 
@@ -25,6 +28,8 @@
 ## Bugzilla
 
 ### [bugzilla-add-security-info.user.js](Bugzilla/bugzilla-add-security-info.user.js)
+
+Author: @gsonnu
 
 Current version: 1.0.2
 
@@ -36,7 +41,9 @@ Adds security-relevant information to Bugzilla bugs: latest CRD specified, SUSE 
 
 ### [bugzilla-add-suse-cve-links.user.js](Bugzilla/bugzilla-add-suse-cve-links.user.js)
 
-Current version: 1.0.8
+Author: @gsonnu
+
+Current version: 1.0.9
 
 Add links to SUSE CVE pages in title and comments.
 
@@ -48,17 +55,23 @@ Add links to SUSE CVE pages in title and comments.
 
 ### [bugzilla-bug-status-in-title.user.js](Bugzilla/bugzilla-bug-status-in-title.user.js)
 
+Author: @gsonnu
+
 Current version: 1.0.0
 
 Puts the bug status (only if closed) in the page title.
 
 ### [bugzilla-fix-background.user.js](Bugzilla/bugzilla-fix-background.user.js)
 
+Author: @gsonnu
+
 Current version: 1.2.0
 
 Fixes the bugzilla background for better integration with the Dark Reader addon.
 
 ### [bugzilla-hide-bots-comments.user.js](Bugzilla/bugzilla-hide-bots-comments.user.js)
+
+Author: @gsonnu
 
 Current version: 1.3.1
 
@@ -72,11 +85,15 @@ Hides bots comment in bugzilla by default. Also add links to quickly collapse or
 
 ### [bugzilla-meta-suse-beautifier.user.js](Bugzilla/bugzilla-meta-suse-beautifier.user.js)
 
+Author: @gsonnu
+
 Current version: 1.0.0
 
 Meta userscript containing all Bugzilla graphical addition and fixes.
 
 ### [bugzilla-redirect-to-com.user.js](Bugzilla/bugzilla-redirect-to-com.user.js)
+
+Author: @gsonnu
 
 Current version: 1.1.1
 
@@ -86,6 +103,8 @@ Redirects all bugzilla.opensuse.org bug pages to bugzilla.suse.com. The redirect
 
 ### [ibs-better-title.user.js](IBS/ibs-better-title.user.js)
 
+Author: @gsonnu
+
 Current version: 1.0.1
 
 Changes the title in IBS project/package/file view.
@@ -93,6 +112,8 @@ Changes the title in IBS project/package/file view.
 ## SMASH
 
 ### [smash-add-bugzilla-summary.user.js](SMASH/smash-add-bugzilla-summary.user.js)
+
+Author: @gsonnu
 
 Current version: 1.0.0
 
@@ -104,6 +125,8 @@ Add summary for Bugzilla bugs in the Overview tab.
 
 ### [smash-opensuse-actions.user.js](SMASH/smash-opensuse-actions.user.js)
 
+Author: @gsonnu
+
 Current version: 1.2.4
 
 Adds a button to open a bug in the openSUSE bugzilla tracker. Also updates the action item in the Actions dropdown with the same link.
@@ -113,6 +136,8 @@ Adds a button to open a bug in the openSUSE bugzilla tracker. Also updates the a
 ![](images/smash-opensuse-actions.png)
 
 ### [smash-useful-links.user.js](SMASH/smash-useful-links.user.js)
+
+Author: @gsonnu
 
 Current version: 1.5.0
 
@@ -132,7 +157,17 @@ Adds links to the package, package support status page, package changes and spec
 
 ## SMELT
 
+### [smelt-autorefresh-table.user.js](SMELT/smelt-autorefresh-table.user.js)
+
+Author: @crazybyte
+
+Current version: 1.0.0
+
+Automatically refresh the table content every 10s.
+
 ### [smelt-better-ibs-integration.user.js](SMELT/smelt-better-ibs-integration.user.js)
+
+Author: @gsonnu
 
 Current version: 1.1.0
 
@@ -143,6 +178,22 @@ Add links to IBS project (patchinfo and package repository) to the SMELT inciden
 ![](images/smelt-better-ibs-integration_package.png)
 
 ![](images/smelt-better-ibs-integration_patchinfo.png)
+
+### [smelt-highlight-login.user.js](SMELT/smelt-highlight-login.user.js)
+
+Author: @crazybyte
+
+Current version: 1.0.0
+
+Highlight the login button.
+
+### [smelt-only-show-security-submissions.user.js](SMELT/smelt-only-show-security-submissions.user.js)
+
+Author: @crazybyte
+
+Current version: 1.1.0
+
+Automatically hide non-security items in SMELT.
 
 # Installation
 
