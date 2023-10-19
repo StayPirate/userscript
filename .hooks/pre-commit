@@ -40,6 +40,12 @@ get_field() {
 }
 
 
+get_author() {
+    local author="$(get_field "$1" "author")"
+    printf 'Author: @%s\n\n' "$author"
+}
+
+
 get_version() {
     local ver="$(get_field "$1" "version")"
     printf 'Current version: %s\n\n' "$ver"
@@ -91,6 +97,7 @@ generate_scripts_docs() {
 
         printf '### [%s](%s)\n\n' "$script" "$file"
 
+        get_author "$file"
         get_version "$file"
         get_description "$file"
 
