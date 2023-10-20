@@ -5,7 +5,7 @@
 // @match       https://bugzilla.opensuse.org/show_bug.cgi?*
 // @run-at      document-end
 // @grant       none
-// @version     1.0.3
+// @version     1.0.4
 // @author      gsonnu
 // @description Adds security-relevant information to Bugzilla bugs: latest CRD specified, SUSE CVSS scores, submissions
 // ==/UserScript==
@@ -126,8 +126,10 @@
     function getSubmissions(comment, subs) {
         const ignore_products = /Channels/;   // these are RR, only seen for kernel
         const ignore_packages = /Live-Patch/; // filter out all the livepatch submissions
-        const rr_regex = /(?<url>https:[^\s]+) (?<product>[^\s]+) \/ (?<packages>[^\s]+)/g;
+        const pkg_name_regex = /(?<name>.*)\.SUSE_.*/;
+        const rr_regex = /(?<url>https:[^\s]+) (?<product>[^\s]+) \/ (?<packages>(?:\[\d+\spackages\]|[^\s]+))/g;
         const id_regex = /(\d+)\/?$/;
+
 
         let match;
         // get submissions
@@ -135,22 +137,28 @@
             if (ignore_products.test(match.groups.product))
                 continue;
 
-            // workaround for submissions with multiple packages, e.g. kernel
-            // TODO: extend for packages other than kernel-source
-
+            // handle submissions with multiple packages
             let pkg;
+            let extra = '';
+            let pkg_match;
             let packages = match.groups.packages.split('+');
 
-            if (packages.length > 1)
-                if (!(pkg = packages.find((e) => e.startsWith('kernel-source'))))
-                    pkg = `${packages[0]} and other ${packages.length - 1} packages`
-            else
+            if (packages.length === 1) {
                 pkg = packages[0];
+            } else {
+                pkg = packages.find((e) => e.startsWith('kernel-source')) || packages[0];
+                extra = ` and other ${packages.length - 1} packages`;
+            }
 
             if (ignore_packages.test(pkg))
-              continue;
+                continue;
+
+            if ((pkg_match = pkg_name_regex.exec(pkg)) !== null)
+                pkg = pkg_match.groups.name;
 
             let key = `${match.groups.product}/${pkg}`;
+
+            pkg += extra;
 
             if (typeof(subs[key]) === 'undefined')
                 subs[key] = [];
