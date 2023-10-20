@@ -5,7 +5,7 @@
 // @match       https://bugzilla.opensuse.org/show_bug.cgi?*
 // @run-at      document-end
 // @grant       none
-// @version     1.0.2
+// @version     1.0.3
 // @author      gsonnu
 // @description Adds security-relevant information to Bugzilla bugs: latest CRD specified, SUSE CVSS scores, submissions
 // ==/UserScript==
@@ -142,7 +142,8 @@
             let packages = match.groups.packages.split('+');
 
             if (packages.length > 1)
-                pkg = packages.find((e) => e.startsWith('kernel-source')) || match.groups.packages;
+                if (!(pkg = packages.find((e) => e.startsWith('kernel-source'))))
+                    pkg = `${packages[0]} and other ${packages.length - 1} packages`
             else
                 pkg = packages[0];
 
