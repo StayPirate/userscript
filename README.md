@@ -18,6 +18,7 @@
   - [SMELT](#smelt)
     - [smelt-autorefresh-table.user.js](#smelt-autorefresh-tableuserjs)
     - [smelt-better-ibs-integration.user.js](#smelt-better-ibs-integrationuserjs)
+    - [smelt-fix-links.user.js](#smelt-fix-linksuserjs)
     - [smelt-highlight-login.user.js](#smelt-highlight-loginuserjs)
     - [smelt-only-show-security-submissions.user.js](#smelt-only-show-security-submissionsuserjs)
 - [Installation](#installation)
@@ -178,6 +179,14 @@ Add links to IBS project (patchinfo and package repository) to the SMELT inciden
 ![](images/smelt-better-ibs-integration_package.png)
 
 ![](images/smelt-better-ibs-integration_patchinfo.png)
+
+### [smelt-fix-links.user.js](SMELT/smelt-fix-links.user.js)
+
+Author: @gsonnu
+
+Current version: 1.0.0
+
+Makes SMELT links behave like normal links.
 
 ### [smelt-highlight-login.user.js](SMELT/smelt-highlight-login.user.js)
 
