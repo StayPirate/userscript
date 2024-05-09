@@ -140,7 +140,7 @@ Adds a button to open a bug in the openSUSE bugzilla tracker. Also updates the a
 
 Author: @gsonnu
 
-Current version: 1.5.0
+Current version: 1.5.1
 
 Adds links to the package, package support status page, package changes and spec file & SUSE CVE page in the SMASH issue page.
 

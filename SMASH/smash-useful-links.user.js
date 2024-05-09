@@ -4,7 +4,7 @@
 // @match       https://smash.suse.de/issue/*
 // @run-at      document-end
 // @grant       none
-// @version     1.5.0
+// @version     1.5.1
 // @author      gsonnu
 // @description Adds links to the package, package support status page, package changes and spec file & SUSE CVE page in the SMASH issue page
 // ==/UserScript==
@@ -111,14 +111,13 @@
             parent.append(link,
                           space,
                           space.cloneNode(),
-                          addButton(`${url}/package/view_file/${proj}/${pkg}/${pkg}.changes?expand=1`,
+                          addButton(`${url}/projects/${proj}/packages/${pkg}/files/${pkg}.changes?expand=1`,
                                     null, 'history', 'Changelog'),
                           space.cloneNode(),
-                          addButton(`${url}/package/view_file/${proj}/${pkg}/${pkg}.spec?expand=1`,
+                          addButton(`${url}/projects/${proj}/packages/${pkg}/files/${pkg}.spec?expand=1`,
                                     null, 'build', 'SPEC file'),
                           space.cloneNode(),
                          );
-
         }
     }
 
