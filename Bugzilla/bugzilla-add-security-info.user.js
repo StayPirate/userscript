@@ -5,7 +5,7 @@
 // @match       https://bugzilla.opensuse.org/show_bug.cgi?*
 // @run-at      document-end
 // @grant       none
-// @version     1.0.4
+// @version     1.1.0
 // @author      gsonnu
 // @description Adds security-relevant information to Bugzilla bugs: latest CRD specified, SUSE CVSS scores, submissions
 // ==/UserScript==
@@ -33,7 +33,7 @@
     if (crd)
         addCRD(table, crd);
 
-    if (cves.length > 0)
+    if (Object.keys(cves).length > 0)
         addCVEs(table, cves);
 
     if (Object.keys(submissions).length > 0)
@@ -43,9 +43,9 @@
     // getter and "setter"
 
     function getCVEs(whiteboard) {
-        const cvss_regex = /CVSSv3.1:SUSE:(CVE-[^:]+):(\d+.\d+):[^\s]+/g;
+        const cvss_regex = /CVSSv([0-9.]+):SUSE:(CVE-[^:]+):(\d+.\d+):[^\s]+/g;
 
-        let cves = [];
+        let cves = {};
         let value;
 
         if (whiteboard)
@@ -58,11 +58,14 @@
             while ((match = cvss_regex.exec(value)) !== null) {
                 let cve = {cve: null, cvss: 0, severity: null};
 
+                // CVSS version (as a float)
+                let version = parseFloat(match[1]) || 0;
+
                 // CVE id
-                cve.id = match[1];
+                cve.id = match[2];
 
                 // get score as a float
-                cve.cvss = parseFloat(match[2]) || 0;
+                cve.cvss = parseFloat(match[3]) || 0;
 
                 // calculate severity
                 if (cve.cvss >= 9)
@@ -74,16 +77,25 @@
                 else
                     cve.severity = 'low';
 
-                cves.push(cve);
+                version = version.toFixed(1);
+
+                let cve_list = cves[version];
+
+                if (typeof(cve_list) === 'undefined')
+                    cve_list = cves[version] = [];
+
+                cve_list.push(cve);
             }
         }
 
         return cves;
+
     }
 
 
-    function addCVEs(table, cves) {
-        let label = 'CVSS Score';
+
+    function addCVEValues(table, cves, version) {
+        let label = `CVSS v${version} Score`;
         let cont = document.createElement('div');
         cont.setAttribute('id', 'cvss-score-table')
 
@@ -104,6 +116,12 @@
         cont.removeChild(cont.lastChild);
 
         addRow(table, cont, label);
+    }
+
+
+    function addCVEs(table, cves) {
+        for (let version of Object.keys(cves).toSorted())
+            addCVEValues(table, cves[version], version);
     }
 
 

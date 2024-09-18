@@ -32,7 +32,7 @@
 
 Author: @gsonnu
 
-Current version: 1.0.4
+Current version: 1.1.0
 
 Adds security-relevant information to Bugzilla bugs: latest CRD specified, SUSE CVSS scores, submissions.
 
